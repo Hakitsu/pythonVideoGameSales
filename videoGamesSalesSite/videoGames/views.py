@@ -9,15 +9,10 @@ app = FastAPI()
 
 def index(request):
       if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
         form = genreForm(request.POST)
-        # check whether it's valid:
-        if form.is_valid():
-            
+        if form.is_valid(): 
             data = form.cleaned_data['genre', 'year']
             return render(request, 'predict.html', {'data': data})
-
-    # if a GET (or any other method) we'll create a blank form
       else:
         form = genreForm()
       return render(request, 'index.html', {'form': form})
@@ -25,7 +20,6 @@ def index(request):
 
 @app.post("/predict/")
 async def predict(request):
-    
     platform = request.POST['platform']
     genre = request.POST['genre']
     year = request.POST['year']
@@ -34,6 +28,9 @@ async def predict(request):
     jp_sales= request.POST['jp_sales']
     global_sales = request.POST['global_sales']
 
+# TODO utiliser la class contenant le model d'IA 
+    result = "toto" 
+
     context = {
             "platform": platform,
             "genre": genre,
@@ -41,7 +38,8 @@ async def predict(request):
             "publisher": publisher,
             "na_sales": na_sales,
             "jp_sales": jp_sales,
-            "global_sales": global_sales
+            "global_sales": global_sales,
+            "result": result
         }
     
     return render(request, 'predict.html', context)
