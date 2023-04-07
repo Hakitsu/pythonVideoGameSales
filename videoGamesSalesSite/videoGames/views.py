@@ -1,5 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from videoGames.apiIA import prediction
 
 from videoGames.forms import genreForm
 
@@ -28,8 +29,15 @@ async def predict(request):
     jp_sales= request.POST['jp_sales']
     global_sales = request.POST['global_sales']
 
-# TODO utiliser la class contenant le model d'IA 
-    result = "toto" 
+    result = prediction( {
+            "platform": platform,
+            "genre": genre,
+            "year": year,
+            "publisher": publisher,
+            "na_sales": na_sales,
+            "jp_sales": jp_sales,
+            "global_sales": global_sales,
+        })
 
     context = {
             "platform": platform,
