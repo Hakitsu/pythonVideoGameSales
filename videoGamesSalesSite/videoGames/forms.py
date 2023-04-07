@@ -1,5 +1,112 @@
 from django import forms
 
 class genreForm(forms.Form):
-    genre = forms.CharField(label='genre', max_length=100)
-    year = forms.CharField(label='year', max_length=100)
+    genreOptions= (
+        ('Action', 'Action'),
+        ('Adventure', 'Adventure'),
+        ('Sports', 'Sports'),
+        ('Misc', 'Misc'),
+        ('Role-Playing', 'Role-Playing'),
+        ('Shooter', 'Shooter'),
+        ('Racing', 'Racing'),
+        ('Platform', 'Platform'),
+        ('Simulation', 'Simulation'),
+        ('Fighting ', 'Fighting '),
+        ('Strategy', 'Strategy'),
+        ('Puzzle', 'Puzzle'),
+    )
+
+    platformOptions= (
+        ('PSP', 'PSP'),
+        ('PSV', 'PSV'),
+        ('PS', 'PS'),
+        ('PS2', 'PS2'),
+        ('PS3', 'PS3'),
+        ('PS4', 'PS4'),
+        ('Wii', 'Wii'),
+        ('WiiU', 'WiiU'),
+        ('X360', 'X360'),
+        ('XOne', 'XOne'),
+        ('PC', 'PC'),
+        ('XB', 'XB'),
+        ('GBA', 'GBA'),
+        ('N64', 'N64'),
+        ('NES', 'NES'),
+        ('GC', 'GC'),
+        ('GB', 'GB'),
+        ('SNES', 'SNES'),
+        ('DS', 'DS'),
+        ('3DS', '3DS'),
+        ('SAT', 'SAT'),
+        ('2600', '2600'),
+        ('DC', 'DC'),
+        ('GEN', 'GEN'),
+        ('NG', 'NG'),
+        ('SCD', 'SCD'),
+        ('WS', 'WS'),
+        ('3DO', '3DO'),
+        ('TG16', 'TG16'),
+        ('PCFX', 'PCFX'),
+        ('GG', 'GG'),
+    )
+
+    publisherOptions= (
+        ('Electronic Arts', 'Electronic Arts'),
+        ('Activision', 'Activision'),
+        ('Namco Bandai Games', 'Namco Bandai Games'),
+        ('Ubisoft', 'Ubisoft'),
+        ('Konami Digital Entertainment', 'Konami Digital Entertainment'),
+        ('THQ', 'THQ'),
+        ('Nintendo', 'Nintendo'),
+        ('Sony Computer Entertainment', 'Sony Computer Entertainment'),
+        ('Sega', 'Sega'),
+        ('Take-Two Interactive', 'Take-Two Interactive'),
+        ('Capcom', 'Capcom'),
+        ('Atari', 'Atari'),
+        ('Tecmo Koei', 'Tecmo Koei'),
+        ('Square Enix', 'Square Enix'),
+        ('Warner Bros. Interactive Entertainment', 'Warner Bros. Interactive Entertainment'),
+        ('Disney Interactive Studios', 'Disney Interactive Studios'),
+        ('Eidos Interactive', 'Eidos Interactive'),
+        ('Midway Games', 'Midway Games'),
+        ('505 Games', '505 Games'),
+        ('Microsoft Game Studios', 'Microsoft Game Studios'),
+        ('Acclaim Entertainment', 'Acclaim Entertainment'),
+        ('D3Publisher', 'D3Publisher'),
+        ('Vivendi Games', 'Vivendi Games'),
+        ('Codemasters', 'Codemasters'),
+        ('Idea Factory', 'Idea Factory'),
+        ('Deep Silver', 'Deep Silver'),
+        ('Nippon Ichi Software', 'Nippon Ichi Software'),
+        ('Zoo Digital Publishing', 'Zoo Digital Publishing'),
+        ('Majesco Entertainment', 'Majesco Entertainment'),
+        ('LucasArts', 'LucasArts'),
+        ('Rising Star Games', 'Rising Star Games'),
+        ('Hudson Soft', 'Hudson Soft'),
+        ('Banpresto', 'Banpresto'),
+        ('Bethesda Softworks', 'Bethesda Softworks'),
+        ('Crave Entertainment', 'Crave Entertainment'),
+        ('Atlus', 'Atlus'),
+        ('Virgin Interactive', 'Virgin Interactive'),
+        ('Infogrames', 'Infogrames'),
+        ('Ignition Entertainment', 'Ignition Entertainment'),
+        ('5pb', '5pb'),
+        ('Focus Home Interactive', 'Focus Home Interactive'),
+        ('Marvelous Interactive', 'Marvelous Interactive'),
+        ('Empire Interactive', 'Empire Interactive'),
+        ('SquareSoft', 'SquareSoft'),
+        ('Kadokawa Shoten', 'Kadokawa Shoten'),
+        ('Destineer', 'Destineer'),
+        ('GT Interactive', 'GT Interactive'),
+        ('DTP Entertainment', 'DTP Entertainment'),
+        ('Alchemist', 'Alchemist'),
+        ('MTV Games', 'MTV Games')
+    )
+
+    platform=  forms.CharField(label="platforme", widget=forms.Select(choices=platformOptions))
+    genre = forms.CharField(widget=forms.Select(choices=genreOptions))
+    year = forms.CharField(label='année', max_length=100)
+    publisher= forms.CharField(label="éditeur",widget=forms.Select(choices=publisherOptions))
+    na_sales= forms.CharField(label='Ventes en Amérique du Nord (en million)', max_length=100)
+    jp_sales=forms.CharField(label='ventes au Japon (en million)', max_length=100)
+    global_sales= forms.CharField(label="ventes global (en million)", max_length=100)
