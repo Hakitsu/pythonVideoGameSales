@@ -1,3 +1,5 @@
+{% load static %}
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,25 +13,24 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
           crossorigin="anonymous">
-          {% load static %}
-
-          <link rel="stylesheet" href="{% static '/style.css' %}">
+          
+          <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 </head>
 <body>
 <main class="container">
-    <div class="col text-center justify-content-center">
-        <div class="col">
-            <h2 class="display-4">Vente de jeux vidéos</h1>
-            <div class="Liste">
-                <form action="predict" method="post">
-                    {% csrf_token %}
-                    {{form}}
-                    <input type="submit" value="Prédire les ventes en Europe (en millions)">
-                </form>
-            </div>
-        </div>
-    </div>
+    
+            <h1>Vente de jeux vidéos</h1>
+            <h4>Choisis les valeurs des paramètres suivant pour prédire les ventes en Europe </h4>
+                <div class="container">
+                    <form action="predict" method="post" class="Liste">
+                        {% csrf_token %}
+                        {{form}}
+                        <input type="submit" value="Prédire les ventes en Europe (en millions)" class="submitButton">
+                    </form>
+                </div>
+           
+        
 </main>
 </body>
 </html>

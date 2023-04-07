@@ -1,0 +1,48 @@
+.Liste {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 2rem;
+}
+
+h1 {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.containerPrediction{
+    display: flex;
+    flex-direction: row;
+    margin-top: 3rem;
+    margin-left: 5rem;
+}
+
+.ListeParams {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 50%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+select {
+    width: 100%
+}
+
+input {
+    width: 100%
+}
+
+.submitButton{
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: black;
+    color: white;
+    border-radius: 10;
+}
