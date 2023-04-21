@@ -104,8 +104,8 @@ class genreForm(forms.Form):
     )
 
     platform=  forms.CharField(label="platforme", widget=forms.Select(choices=platformOptions))
-    genre = forms.CharField(widget=forms.Select(choices=genreOptions))
     year = forms.CharField(label='année', max_length=100)
+    genre = forms.CharField(widget=forms.Select(choices=genreOptions))
     publisher= forms.CharField(label="éditeur",widget=forms.Select(choices=publisherOptions))
     na_sales= forms.CharField(label='Ventes en Amérique du Nord (en million)', max_length=100)
     jp_sales=forms.CharField(label='ventes au Japon (en million)', max_length=100)

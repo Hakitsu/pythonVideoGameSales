@@ -22,8 +22,8 @@ def index(request):
 @app.post("/predict/")
 async def predict(request):
     platform = request.POST['platform']
-    genre = request.POST['genre']
     year = request.POST['year']
+    genre = request.POST['genre']
     publisher =request.POST['publisher']
     na_sales = request.POST['na_sales']
     jp_sales= request.POST['jp_sales']
@@ -31,8 +31,8 @@ async def predict(request):
 
     result = prediction( {
             "platform": platform,
-            "genre": genre,
             "year": year,
+            "genre": genre,
             "publisher": publisher,
             "na_sales": na_sales,
             "jp_sales": jp_sales,
@@ -41,8 +41,8 @@ async def predict(request):
 
     context = {
             "platform": platform,
-            "genre": genre,
             "year": year,
+            "genre": genre,
             "publisher": publisher,
             "na_sales": na_sales,
             "jp_sales": jp_sales,
