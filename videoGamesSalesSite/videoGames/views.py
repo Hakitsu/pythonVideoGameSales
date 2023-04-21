@@ -1,33 +1,28 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from videoGames.apiIA import prediction
-
 from videoGames.forms import genreForm
 
-from fastapi import FastAPI
-
-app = FastAPI()
-
 def index(request):
-      if request.method == 'POST':
+    if request.method == 'POST':
         form = genreForm(request.POST)
         if form.is_valid(): 
-            data = form.cleaned_data['genre', 'year']
-            return render(request, 'predict.html', {'data': data})
-      else:
+            data = form.cleaned_data
+            # Redirigez vers la page de prédiction avec les données du formulaire
+            return HttpResponseRedirect('/predict?{}'.format(data.urlencode()))
+    else:
         form = genreForm()
-      return render(request, 'index.html', {'form': form})
+    return render(request, 'index.html', {'form': form})
 
-
-@app.post("/predict/")
-async def predict(request):
-    platform = request.POST['platform']
-    genre = request.POST['genre']
-    year = request.POST['year']
-    publisher =request.POST['publisher']
-    na_sales = request.POST['na_sales']
-    jp_sales= request.POST['jp_sales']
-    global_sales = request.POST['global_sales']
+def predict(request):
+    # Récupérer les données du formulaire dans la requête GET
+    platform = request.GET.get('platform')
+    genre = request.GET.get('genre')
+    year = request.GET.get('year')
+    publisher = request.GET.get('publisher')
+    na_sales = float(request.GET.get('na_sales'))
+    jp_sales = float(request.GET.get('jp_sales'))
+    global_sales = float(request.GET.get('global_sales'))
 
     result = prediction( {
             "platform": platform,

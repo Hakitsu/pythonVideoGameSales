@@ -11,6 +11,17 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
+from fastapi import FastAPI
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'videoGamesSalesSite.settings')
 
 application = get_wsgi_application()
+
+from videoGames.urls import router as main_router
+
+app = FastAPI(
+    title="videogames",
+    description="A project",
+    version="1",
+)
+
+app.include_router(main_router, prefix="/api")
