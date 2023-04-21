@@ -5,7 +5,7 @@ cd pythonVideoGameSales/videoGamesSalesSite
 python manage.py runserver 8080
 aller sur http://127.0.0.1:8080/videoGames pour avoir la page de formulaire
 
-Pour lancer fastApi (sur la branche “lea”)
+Pour lancer fastApi (sur la branche “mise-en-place-fastApi”)
 cd pythonVideoGameSales
 uvicorn videoGamesSalesSite.wsgi:app --reload
 
